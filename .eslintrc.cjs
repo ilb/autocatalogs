@@ -19,7 +19,12 @@ module.exports = {
 		es6: true,
 		'jest/globals': true
 	},
-	extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:jest/recommended'],
+	extends: [
+		'eslint:recommended',
+		'plugin:react/recommended',
+		'plugin:prettier/recommended',
+		'plugin:jest/recommended'
+	],
 	rules: {
 		'prettier/prettier': [
 			'error',
@@ -27,6 +32,8 @@ module.exports = {
 				endOfLine: 'auto'
 			},
 			{ usePrettierrc: true }
-		]
+		],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
 	}
 };

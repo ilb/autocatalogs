@@ -5,6 +5,9 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
     "prisma:push": "npx prisma db push",
     "prisma:generate": "npx prisma generate",
     "test": "node -r dotenv/config --experimental-vm-modules node_modules/jest/bin/jest.js"
@@ -23,19 +26,28 @@
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.4.2",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^28.1.0",
+    "next": "^12.3.1",
     "prettier": "^2.6.2",
-    "prisma": "^4.4.0"
+    "prisma": "^4.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "semantic-ui-offline": "^2.4.1-1"
   },
   "dependencies": {
     "@ilb/node_context": "^1.0.31",
+    "@ilb/uniformscomponents": "^1.0.48",
     "@ilb/uriaccessorjs": "^1.0.26",
     "@prisma/client": "^4.4.0",
+    "antd": "^4.23.5",
     "cyrillic-to-translit-js": "^3.2.1",
     "dotenv": "^16.0.3",
     "node-fetch": "^3.2.5",
     "pino": "^8.1.0",
+    "semantic-ui-react": "^2.1.3",
     "xml2js": "^0.4.23"
   }
 }
