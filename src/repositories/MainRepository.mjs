@@ -57,27 +57,31 @@ export default class MainRepository {
     ]);
 	}
 
-	async deleteAll() {
-		const deletedModels = this.modelRepository.deleteMany();
-		const deletedModelBodies = this.modelBodyRepository.deleteMany();
-		const deletedModelTransmissions = this.modelTransmissionRepository.deleteMany();
-		const deletedModelDrives = this.modelDriveRepository.deleteMany();
-		const deletedManufacturers = this.manufacturerRepository.deleteMany();
-		const deletedModifications = this.modificationRepository.deleteMany();
-		const deletedBodies = this.bodyRepository.deleteMany();
-		const deletedTransmissions = this.transmissionRepository.deleteMany();
-		const deletedDrives = this.driveRepository.deleteMany();
+	async updateAll({
+		manufacturers,
+		models,
+		modifications,
+		transmissions,
+		bodies,
+		modelBody,
+		modelTransmission,
+		drives,
+		modelDrive
+	}) {
+		let updates = []
 
-		await this.prisma.$transaction([
-			deletedModelBodies,
-			deletedModelTransmissions,
-			deletedModelDrives,
-			deletedBodies,
-			deletedTransmissions,
-			deletedDrives,
-			deletedModifications,
-			deletedModels,
-			deletedManufacturers
-		]);
+		updates.push(this.bodyRepository.updateMany(bodies));
+		updates.push(this.transmissionRepository.updateMany(transmissions));
+		updates.push(this.driveRepository.updateMany(drives));
+		updates.push(this.manufacturerRepository.updateMany(manufacturers));
+		updates.push(this.modelRepository.updateMany(models));
+		updates.push(this.modificationRepository.updateMany(modifications));
+		updates.push(this.modelBodyRepository.updateMany(modelBody));
+		updates.push(this.modelTransmissionRepository.updateMany(modelTransmission));
+		updates.push(this.modelDriveRepository.updateMany(modelDrive));
+
+		updates.map(async (update) => {
+			await this.prisma.$transaction(update)
+		})
 	}
 }
