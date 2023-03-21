@@ -29,6 +29,8 @@ export default class Application {
 		this.container = awilix.createContainer();
 		const uriAgentMap = new Map();
 
+		const test = process.env.ILB_SYSID === 'LOCAL';
+
 		const proxy = process.env['internet.proxy.https_apps'];
 
     if (proxy) {
@@ -40,11 +42,12 @@ export default class Application {
 		this.container.register({
 			prisma: asValue(prisma),
 			currentUser: asValue(process.env.USER),
-			uriAccessorFileEnabled: asValue(false),
+			uriAccessorFileEnabled: asValue(test ? true : false),
 			uriAccessorFactory: asClass(UriAccessorFactory),
 			uriAgentFactory: asClass(UriAgentFactory),
 			uriAgentMap: asValue(uriAgentMap),
-			avitoCatalogsUrl: asValue(process.env['apps.autocatalogs.avitocatalogs_url'])
+			avitoCatalogsUrl: asValue(test ? process.env['apps.autocatalogs.avitocatalogs_file']
+			 : process.env['apps.autocatalogs.avitocatalogs_url'])
 		});
 
 		const classes = {};
