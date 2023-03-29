@@ -29,7 +29,7 @@ export default class Application {
 		this.container = awilix.createContainer();
 		const uriAgentMap = new Map();
 
-		const mocksEnabled = process.env[apps.autocatalogs.mocks_enabled];
+		const mocksEnabled = process.env['apps.autocatalogs.mocks_enabled'];
 
 		const proxy = process.env['internet.proxy.https_apps'];
 
