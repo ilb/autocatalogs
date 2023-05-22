@@ -2,7 +2,6 @@
 	"name": "@ilb/autocatalogs",
 	"version": "1.0.3",
 	"description": "Справочник автомобилей",
-	"type": "module",
 	"main": "src/index.js",
 	"scripts": {
 		"prisma:push": "./node_modules/.bin/ldapenv npx prisma db push",
@@ -12,8 +11,9 @@
 		"ilb-build": "./node_modules/.bin/ldapenv prisma generate",
 		"ilb-deploy": "./node_modules/.bin/ldapenv prisma migrate deploy",
 		"catalogs:update": "./node_modules/.bin/ldapenv node bin/updateCatalogs.mjs",
-		"dev": "./node_modules/.bin/ldapenv nodemon server.js",
-		"start": "./node_modules/.bin/ldapenv node --experimental-specifier-resolution=node server.js"
+		"dev": "./node_modules/.bin/ldapenv next dev",
+		"build": "./node_modules/.bin/ldapenv next build",
+		"start": "./node_modules/.bin/ldapenv next start"
 	},
 	"repository": {
 		"type": "git",
@@ -45,9 +45,13 @@
 		"body-parser": "^1.20.1",
 		"cyrillic-to-translit-js": "^3.2.1",
 		"dotenv": "^16.0.3",
+		"next": "^13.4.3",
+		"next-compose-plugins": "^2.2.1",
 		"next-connect": "^0.13.0",
+		"next-transpile-modules": "^10.0.0",
 		"node-fetch": "^3.2.5",
 		"pino": "^8.1.0",
+		"react": "^18.2.0",
 		"yargs": "^17.6.2"
 	}
 }

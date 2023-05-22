@@ -19,6 +19,11 @@ export function handle(usecase) {
 	};
 }
 
+export async function processUsecaseApiInstance(context, usecase) {
+	const request = context.query;
+	return await usecase.process(request);
+}
+
 export async function createScope(req, res) {
 	return application.createScope(req, res);
 }

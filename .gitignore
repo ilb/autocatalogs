@@ -7,6 +7,8 @@ node_modules
 
 dev.db
 
+# next.js build output
+.next
 
 log
 

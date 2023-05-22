@@ -3,7 +3,7 @@
   <env-entry>
     <description>Настройка БД для prisma</description>
     <env-entry-name>DATABASE_URL</env-entry-name>
-    <env-entry-type>java.net.URL</env-entry-type>
+    <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>${apps.autocatalogs.db_user}:${apps.autocatalogs.db_PASSWORD}@${apps.autocatalogs.db}</env-entry-value>
   </env-entry>
   <resource-env-ref>
