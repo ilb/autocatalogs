@@ -2,7 +2,7 @@
 	"name": "@ilb/autocatalogs",
 	"version": "1.0.3",
 	"description": "Справочник автомобилей",
-	"main": "src/index.js",
+	"main": "index.js",
 	"scripts": {
 		"prisma:push": "./node_modules/.bin/ldapenv npx prisma db push",
 		"prisma:migrate": "./node_modules/.bin/ldapenv prisma migrate dev",
