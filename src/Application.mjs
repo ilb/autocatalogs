@@ -3,6 +3,7 @@ import prisma from '../libs/prisma.mjs';
 import container from './container.mjs';
 import { Agent as BetterHttpsProxyAgent } from 'better-https-proxy-agent';
 import {
+  configureAgentConfig,
   configureCert,
   configureProxy,
   UriAccessorFactory,
@@ -28,13 +29,17 @@ export default class Application {
     this.container = awilix.createContainer();
     const uriAgentMap = new Map();
 
+    let httpAgent;
     const proxy = process.env['internet.proxy.https_apps'];
-
-    if (proxy && proxy !== 'undefined') {
-      const certConfig = this.configureCert(process.env);
-      const httpAgent = new BetterHttpsProxyAgent({}, { ...certConfig, ...configureProxy(proxy) });
-      uriAgentMap.set(process.env['apps.autocatalogs.avitocatalogs_url'], httpAgent);
+    const proxyEnabled = JSON.parse(process.env['apps.autocatalogs.proxyEnabled']);
+    const certConfig = this.configureCert(process.env);
+    if (proxyEnabled) {
+      httpAgent = new BetterHttpsProxyAgent({}, { ...certConfig, ...configureProxy(proxy) });
+    } else {
+      httpAgent = configureAgentConfig(certConfig);
     }
+
+    uriAgentMap.set(process.env['apps.autocatalogs.avitocatalogs_url'], httpAgent);
 
     this.container.register({
       prisma: asValue(prisma),

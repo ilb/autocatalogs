@@ -16,6 +16,12 @@
     <env-entry-type>java.net.URL</env-entry-type>
     <env-entry-value>${apps.autocatalogs.db_user}:${apps.autocatalogs.db_PASSWORD}@${apps.autocatalogs.db}</env-entry-value>
   </env-entry>
+  <env-entry>
+    <description>Включение прокси</description>
+    <env-entry-name>apps.autocatalogs.proxyEnabled</env-entry-name>
+    <env-entry-type>java.lang.Boolean</env-entry-type>
+    <env-entry-value>false</env-entry-value>
+  </env-entry>
   <resource-env-ref>
     <description>База данных для загрузки</description>
     <resource-env-ref-name>.apps.autocatalogs.db</resource-env-ref-name>
