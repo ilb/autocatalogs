@@ -21,6 +21,7 @@ import {
   xforwardMiddleware
 } from './libs/middlewares.mjs';
 import { handle } from './core.js';
+import application from './libs/application.mjs';
 
 const argv = yargs(hideBin(process.argv)).argv;
 const port = argv?.p || process.env.HTTP_PORT || 3000;
@@ -44,4 +45,4 @@ const handler = nc({ onError, onNoMatch, attachParams: true })
   .get('/autocatalogs/api/transmissions', handle(GetTransmissionsUsecase, Response))
   .get('/autocatalogs/heartbeat', handle(HeartbeatUsecases, HeartbeatResponse));
 
-http.createServer(handler).listen(port, host);
+application.createContainer().then(() => http.createServer(handler).listen(port, host));

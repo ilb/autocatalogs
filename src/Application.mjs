@@ -9,8 +9,13 @@ import {
   UriAccessorFactory,
   UriAgentFactory
 } from '@ilb/uriaccessorjs';
+import tls from "tls";
+import fs from "fs";
+import createDebug from "debug";
 
 const { asValue, asClass } = awilix;
+const debug = createDebug('autocatalogs');
+
 export default class Application {
   constructor() {
     this.container = null;
@@ -22,6 +27,18 @@ export default class Application {
   configureCert(context) {
     const certfile = context['apps.autocatalogs.certfile'];
     const passphrase = context['apps.autocatalogs.cert_PASSWORD'];
+    try {
+      tls.createSecureContext({
+        cert: fs.readFileSync(certfile),
+        key: fs.readFileSync(certfile),
+        passphrase
+      });
+      debug(`Certificate load OK`);
+    } catch (error) {
+      console.trace(error)
+      throw new Error(`Unable to load certificate: ${error.message}`)
+    }
+
     return configureCert(certfile, passphrase);
   }
 
