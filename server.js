@@ -30,7 +30,7 @@ const host = argv?.H || '127.0.0.1';
 const handler = nc({ onError, onNoMatch, attachParams: true })
   .use(bodyParser.json())
   .use(expressPolyfills)
-  .use(xforwardMiddleware)
+  .all(xforwardMiddleware)
   .use(queryParams)
   .get('/autocatalogs', (req, res) => {
     res.setHeader('Content-Type', 'text/plain');
