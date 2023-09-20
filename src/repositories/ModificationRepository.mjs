@@ -56,7 +56,7 @@ export default class ModificationRepository extends Repository {
           }
         }),
         ...(modelId && {
-          modelId: modelId
+          modelId: Number(modelId)
         }),
         ...(modelName && {
           model: {
