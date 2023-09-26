@@ -1,7 +1,6 @@
 # установка файла: sudo crontab -u autocatalogs /home/autocatalogs/conf/crontab
 
 HOME=/home/autocatalogs
-MAILTO=""
 SERVER_ADMIN=""
 
 # Обновление справочников
