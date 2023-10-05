@@ -4,6 +4,7 @@
   xmlns="http://xmlns.jcp.org/xml/ns/javaee"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
   <env-entry>
     <description>Отключение проверки чексумм для бинарников prisma</description>
     <env-entry-name>PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING</env-entry-name>
@@ -25,7 +26,6 @@
   <resource-env-ref>
     <description>База данных для загрузки</description>
     <resource-env-ref-name>.apps.autocatalogs.db</resource-env-ref-name>
-    <resource-env-ref-type>java.lang.String</resource-env-ref-type>
   </resource-env-ref>
   <env-entry>
     <description>Пользователь БД</description>
@@ -58,7 +58,6 @@
   <resource-env-ref>
     <description>Прокси ресурс</description>
     <resource-env-ref-name>.internet.proxy.https_apps</resource-env-ref-name>
-    <resource-env-ref-type>java.lang.String</resource-env-ref-type>
   </resource-env-ref>
   <env-entry>
     <description>Корневой путь заглушек</description>
