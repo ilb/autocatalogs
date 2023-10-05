@@ -52,7 +52,6 @@ export default class ModificationRepository extends Repository {
         ...(query && {
           name: {
             contains: query,
-            mode: 'insensitive'
           }
         }),
         ...(modelId && {

@@ -39,7 +39,6 @@ export default class ManufacturerRepository extends Repository {
         ...(query && {
           name: {
             contains: query,
-            mode: 'insensitive'
           }
         })
       },

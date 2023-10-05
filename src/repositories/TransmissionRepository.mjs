@@ -45,7 +45,6 @@ export default class TransmissionRepository extends Repository {
         ...(query && {
           name: {
             contains: query,
-            mode: 'insensitive'
           }
         }),
         ...(modelName && {})

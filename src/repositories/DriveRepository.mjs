@@ -44,7 +44,6 @@ export default class DriveRepository extends Repository {
         ...(query && {
           name: {
             contains: query,
-            mode: 'insensitive'
           }
         })
       },
