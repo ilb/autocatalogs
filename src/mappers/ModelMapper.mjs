@@ -17,8 +17,7 @@ export default class ModelMapper {
     const modificationsFromCatalog = [];
     const models = modelsFromCatalog.map((item) => {
       modificationsFromCatalog.push(...item.Generation.flatMap(({ Modification }) => Modification));
-      const name = item.name[0];
-      // console.log(name, item);
+      const name = item.name[0].trim();
       return {
         id: Number(item.id[0]),
         name,
