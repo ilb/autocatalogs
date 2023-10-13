@@ -17,7 +17,7 @@ export default class ManufacturerMapper {
       modelsFromCatalog.push(
         ...item.Model.map((model) => ({ carManufacturerId: Number(item.id[0]), ...model }))
       );
-      const name = item.name[0];
+      const name = item.name[0].trim();
       return {
         id: Number(item.id[0]),
         name,
