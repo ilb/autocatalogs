@@ -63,7 +63,7 @@
     <description>Корневой путь заглушек</description>
     <env-entry-name>apps.autocatalogs.stub.root</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>./stubs</env-entry-value>
+    <env-entry-value>/var/apps/autocatalogs/stubs</env-entry-value>
   </env-entry>
   <env-entry>
     <description>Включение заглушки авито</description>
